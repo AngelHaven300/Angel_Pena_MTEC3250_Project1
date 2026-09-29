@@ -34,11 +34,11 @@ public class Tile : MonoBehaviour
     private SpriteRenderer rend;
     private SpriteRenderer baseRend;
 
-    //For storing the row and column of the tile (for easy identification)
+    // For storing the row and column of the tile (for easy identification)
     public int row;
     public int column;
 
-    //bools for setting tile properties 
+    // Bools for setting tile properties 
     public bool isTrap;
     public bool isCrate;
     public bool isInaccessible;
@@ -61,7 +61,6 @@ public class Tile : MonoBehaviour
 
     public void Init(Type _type)
     {
-        
         grid = GridGenerator.inst;
         visuals = VisualProperties.inst;
 
@@ -70,10 +69,9 @@ public class Tile : MonoBehaviour
 
         type = _type;
 
-        defaultAnimator = visuals.tileVisuals.animController != null? visuals.tileVisuals.animController:null;
-        defaultSprite = visuals.tileVisuals.sprite != null? visuals.tileVisuals.sprite:null;
+        defaultAnimator = visuals.tileVisuals.animController != null ? visuals.tileVisuals.animController : null;
+        defaultSprite = visuals.tileVisuals.sprite != null ? visuals.tileVisuals.sprite : null;
         defaultTileColor = visuals.tileVisuals.color;
-
 
         switch (type)
         {
@@ -84,7 +82,7 @@ public class Tile : MonoBehaviour
 
             case Type.CRATE:
                 ResetVisuals();
-                SetUpVisuals(visuals.crateVisuals.animController, visuals.crateVisuals.sprite, 
+                SetUpVisuals(visuals.crateVisuals.animController, visuals.crateVisuals.sprite,
                              visuals.crateVisuals.color, visuals.crateVisuals.spriteColorOverride);
 
                 isCrate = true;
@@ -93,7 +91,7 @@ public class Tile : MonoBehaviour
 
             case Type.TRAP:
                 ResetVisuals();
-                SetUpVisuals(visuals.trapVisuals.animController, visuals.trapVisuals.sprite, 
+                SetUpVisuals(visuals.trapVisuals.animController, visuals.trapVisuals.sprite,
                              visuals.trapVisuals.color, visuals.trapVisuals.spriteColorOverride);
 
                 isTrap = true;
@@ -101,7 +99,7 @@ public class Tile : MonoBehaviour
 
             case Type.BLOCK:
                 ResetVisuals();
-                SetUpVisuals(visuals.blockVisuals.animController, visuals.blockVisuals.sprite, 
+                SetUpVisuals(visuals.blockVisuals.animController, visuals.blockVisuals.sprite,
                              visuals.blockVisuals.color, visuals.blockVisuals.spriteColorOverride);
 
                 isInaccessible = true;
@@ -109,12 +107,12 @@ public class Tile : MonoBehaviour
 
             case Type.GOAL:
                 ResetVisuals();
-                SetUpVisuals(visuals.goalVisuals.animController, visuals.goalVisuals.sprite, 
+                SetUpVisuals(visuals.goalVisuals.animController, visuals.goalVisuals.sprite,
                              visuals.goalVisuals.color, visuals.goalVisuals.spriteColorOverride);
 
                 isGoal = true;
                 break;
-        }       
+        }
     }
 
     public void SetBase()
@@ -126,28 +124,22 @@ public class Tile : MonoBehaviour
             baseAnimator = defaultAnimator;
             var anim = GetAnimator(true);
             anim.runtimeAnimatorController = baseAnimator;
-
         }
         else if (defaultSprite != null)
         {
             baseSprite = defaultSprite;
             baseRend.sprite = baseSprite;
 
-
             if (visuals.tileVisuals.spriteColorOverride)
             {
                 baseRend.color = defaultTileColor;
             }
-
         }
         else
         {
             baseRend.color = defaultTileColor;
         }
-
     }
-
-
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -159,7 +151,8 @@ public class Tile : MonoBehaviour
                 Destroy(collision.gameObject);
                 AudioManager.inst.PlaySound(projectileImpact, Sounds.inst.projectileImpactVolume);
                 DestroyCrate();
-            } else if (isInaccessible)
+            }
+            else if (isInaccessible)
             {
                 AudioManager.inst.PlaySound(projectileImpact, Sounds.inst.projectileImpactVolume);
                 ProjectileHit?.Invoke(collision.transform.position);
@@ -172,56 +165,65 @@ public class Tile : MonoBehaviour
     {
         if (!isCrate) return;
 
-        AudioManager.inst.PlaySound(crateDestroyed, Sounds.inst.crateDestroyedVolume);
-
-        Init(Type.DEFAULT);
-
-        CrateDestroyed?.Invoke(this);
-        
-
         isCrate = false;
         isInaccessible = false;
+
+        AudioManager.inst.PlaySound(crateDestroyed, Sounds.inst.crateDestroyedVolume);
+        CrateDestroyed?.Invoke(this);
+
+        Animator anim = GetAnimator();
+
+        if (anim != null && anim.runtimeAnimatorController != null)
+        {
+            anim.SetTrigger("OnShot");
+
+            StartCoroutine(WaitAndResetVisuals(anim));
+        }
+        else
+        {
+            Init(Type.DEFAULT);
+        }
+    }
+
+    private IEnumerator WaitAndResetVisuals(Animator anim)
+    {
+        yield return null;
+
+        float animationDuration = anim.GetCurrentAnimatorStateInfo(0).length;
+
+        yield return new WaitForSeconds(animationDuration);
+
+        Init(Type.DEFAULT);
     }
 
     private void SetUpVisuals(RuntimeAnimatorController _animController, Sprite _sprite, Color _color, bool _colorOverride)
     {
-       
-
         if (_animController != null)
         {
             tileAnimator = _animController;
             var anim = GetAnimator();
             anim.runtimeAnimatorController = tileAnimator;
-
-            //baseRend.color = defaultTileColor;
-
         }
         else if (_sprite != null)
         {
             tileSprite = _sprite;
             rend.sprite = tileSprite;
-            // if (defaultSprite != null)
-            // {
-            //     baseRend.sprite = defaultSprite;
-            // }
 
             if (_colorOverride)
             {
                 tileColor = _color;
                 rend.color = tileColor;
             }
-
         }
         else
-        {   tileColor = _color;
+        {
+            tileColor = _color;
             rend.color = tileColor;
-            //baseRend.color = defaultTileColor;
         }
     }
 
     private void ResetVisuals()
     {
-      
         tileAnimator = null;
         tileSprite = null;
         rend.sprite = squareSprite;
@@ -233,8 +235,8 @@ public class Tile : MonoBehaviour
 
     private Animator GetAnimator(bool forBase = false)
     {
-        GameObject o = forBase? baseRend.gameObject : gameObject;
-        
+        GameObject o = forBase ? baseRend.gameObject : gameObject;
+
         if (!o.TryGetComponent<Animator>(out var anim))
         {
             anim = o.AddComponent<Animator>();
@@ -248,7 +250,6 @@ public class Tile : MonoBehaviour
 
         int[] dx = { 0, 0, 1, -1 };
         int[] dy = { 1, -1, 0, 0 };
-
 
         for (int i = 0; i < 4; i++)
         {
@@ -265,10 +266,8 @@ public class Tile : MonoBehaviour
         return neighbors;
     }
 
-
     public Vector2 ToVector()
     {
         return transform.position;
     }
-
 }
