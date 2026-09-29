@@ -398,8 +398,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.1
-  m_fontSizeBase: 61.1
+  m_fontSize: 61
+  m_fontSizeBase: 61
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -556,22 +556,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4704adf934ddd4db0a2e8a48cec0266d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 0}
-  musicVolume: 1
-  ambience: {fileID: 0}
-  ambienceVolume: 1
-  playerMove: {fileID: 0}
-  playerMoveVolume: 1
-  fireProjectile: {fileID: 0}
-  fireProjectileVolume: 1
-  projectileImpact: {fileID: 0}
-  projectileImpactVolume: 1
-  crateDestroyed: {fileID: 0}
-  crateDestroyedVolume: 1
-  enterTrap: {fileID: 0}
-  enterTrapVolume: 1
-  goalReached: {fileID: 0}
-  goalReachedVolume: 1
+  music: {fileID: 8300000, guid: caeebd67b27ed5d43b7aaf14ccda04d9, type: 3}
+  musicVolume: 0.689
+  ambience: {fileID: 8300000, guid: 4a4221b72a0ede1499795790b23b0f3b, type: 3}
+  ambienceVolume: 0.132
+  playerMove: {fileID: 8300000, guid: 522397c61946a0643b32c6d44545a8a6, type: 3}
+  playerMoveVolume: 0.065
+  fireProjectile: {fileID: 8300000, guid: 12a53c153e551794eae45c6b31ad0229, type: 3}
+  fireProjectileVolume: 0.206
+  projectileImpact: {fileID: 8300000, guid: 6595424d9035c264b98e72260c0df6ef, type: 3}
+  projectileImpactVolume: 0.092
+  crateDestroyed: {fileID: 8300000, guid: 01dbe3d4b4ff7f948a78c081707b27d9, type: 3}
+  crateDestroyedVolume: 0.286
+  enterTrap: {fileID: 8300000, guid: 659c1195321800542ad240bb4f8e51d7, type: 3}
+  enterTrapVolume: 0.209
+  goalReached: {fileID: 8300000, guid: c841a9c0633a31345a132c9bdb60b16c, type: 3}
+  goalReachedVolume: 0.628
 --- !u!114 &325063152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,43 +584,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8fb8ccb1a084c59a86ad73efd8ee89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: -2130163334996902406, guid: 665c021e6ae6aa842a06d7ad8613ead3, type: 3}
   playerVisuals:
     playerStartingDirection: 0
-    animController: {fileID: 0}
+    animController: {fileID: 9100000, guid: 09c8bacdd68aeea40b39ff07bb536881, type: 2}
     defaultSprite: {fileID: 0}
     color: {r: 0.14117643, g: 0.29628542, b: 1, a: 1}
     spriteColorOverride: 0
     impactColor: {r: 1, g: 0, b: 0, a: 1}
   projectileVisuals:
-    animController: {fileID: 0}
-    sprite: {fileID: 0}
+    animController: {fileID: 9100000, guid: d73e4f9451b486644abe2484d401bfbc, type: 2}
+    sprite: {fileID: -2510476293373519475, guid: 7dbe488ffa4f893449c5f10ebfcfe7d1, type: 3}
     color: {r: 1, g: 0.8624264, b: 0, a: 1}
     spriteColorOverride: 0
     enableTrail: 0
   tileVisuals:
     animController: {fileID: 0}
-    sprite: {fileID: 0}
+    sprite: {fileID: -5547782861406558469, guid: bf2f6b55f718c5a49a8910c6b1d29d85, type: 3}
     color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
     spriteColorOverride: 0
   crateVisuals:
-    animController: {fileID: 0}
-    sprite: {fileID: 0}
+    animController: {fileID: 9100000, guid: 3a8d2329e63ad2e47b92c300f59f2f2a, type: 2}
+    sprite: {fileID: -2642393358525368334, guid: 3316912b7ba8e934e981e8687bbeb161, type: 3}
     color: {r: 1, g: 0.540573, b: 0.23137254, a: 1}
     spriteColorOverride: 0
   trapVisuals:
-    animController: {fileID: 0}
+    animController: {fileID: 9100000, guid: 75a0d812e5e75504e8d4569934a951e4, type: 2}
     sprite: {fileID: 0}
     color: {r: 1, g: 0, b: 0.36335707, a: 1}
     spriteColorOverride: 0
   blockVisuals:
     animController: {fileID: 0}
-    sprite: {fileID: 0}
+    sprite: {fileID: -1080067710, guid: bf2f6b55f718c5a49a8910c6b1d29d85, type: 3}
     color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
     spriteColorOverride: 0
   goalVisuals:
     animController: {fileID: 0}
-    sprite: {fileID: 0}
+    sprite: {fileID: -8483136219492842000, guid: 164f33b17d81d0b4cb8a6891e28acb31, type: 3}
     color: {r: 0, g: 1, b: 0.7911868, a: 1}
     spriteColorOverride: 0
 --- !u!114 &325063153
@@ -635,13 +635,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca2f95a7db4e4b3ca9d3dedbde6e80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowPlayerRotation: 1
+  allowPlayerRotation: 0
   fireKey: 32
-  playerMoveSpeed: 3
-  projectileSpeed: 7
-  blockCount: 7
+  playerMoveSpeed: 1
+  projectileSpeed: 5
+  blockCount: 9
   trapTileCount: 6
-  crateCount: 11
+  crateCount: 19
   gridColumns: 13
   gridRows: 7
   gridOriginPosition: {x: -7, y: -3, z: 0}
@@ -712,18 +712,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f6c72e098e149bbaee9b489300a829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIProperties
-  font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  titleFont: {fileID: 0}
+  font: {fileID: 11400000, guid: d65b675d1e0eb674ba6474dc7eea4453, type: 2}
+  titleFont: {fileID: 11400000, guid: d65b675d1e0eb674ba6474dc7eea4453, type: 2}
   enableGameTitle: 1
-  gameTitle: Game Title
-  crateLabel: Crates Remaining
+  gameTitle: EGGSTERMINATE
+  crateLabel: Eggs Remaining
   stepsLabel: Steps Taken
-  timerColor: {r: 0, g: 0.9803922, b: 0.6039216, a: 1}
-  titleColor: {r: 1, g: 1, b: 1, a: 1}
+  timerColor: {r: 0.8227398, g: 1, b: 0.25, a: 1}
+  titleColor: {r: 0.7458092, g: 1, b: 0.3066038, a: 1}
   textColor: {r: 1, g: 1, b: 1, a: 1}
-  restartButtonColor: {r: 1, g: 1, b: 1, a: 1}
-  restartTextColor: {r: 0, g: 0, b: 0, a: 1}
-  backPanelColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0.7019608}
+  restartButtonColor: {r: 0.8301887, g: 0.11356357, b: 0.5366315, a: 1}
+  restartTextColor: {r: 1, g: 1, b: 1, a: 1}
+  backPanelColor: {r: 0.23120324, g: 0.13932894, b: 0.2924528, a: 0.7647059}
   backPanelImage: {fileID: 0}
   spriteColorOverride: 0
 --- !u!1 &488166816
@@ -1622,8 +1622,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.5
-  m_fontSizeBase: 36.5
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1812,7 +1812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 327, y: 48}
+  m_AnchoredPosition: {x: 327, y: 29.779999}
   m_SizeDelta: {x: 1100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1351758403
@@ -1862,8 +1862,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2090,8 +2090,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.02
-  m_fontSizeBase: 33.02
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2227,8 +2227,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.02
-  m_fontSizeBase: 33.02
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
